@@ -1,0 +1,112 @@
+/* line 1, /Users/mattybow/Desktop/tern/gfy-cat/gfy-cat/src/gfy-cat/gfy-cat.scss */
+:host {
+  display: block;
+  text-align: center; }
+
+/* line 5, /Users/mattybow/Desktop/tern/gfy-cat/gfy-cat/src/gfy-cat/gfy-cat.scss */
+video {
+  float: left;
+  height: auto; }
+
+/* line 9, /Users/mattybow/Desktop/tern/gfy-cat/gfy-cat/src/gfy-cat/gfy-cat.scss */
+#gfyContainer {
+  position: relative;
+  display: inline-block;
+  overflow: hidden; }
+
+/* line 14, /Users/mattybow/Desktop/tern/gfy-cat/gfy-cat/src/gfy-cat/gfy-cat.scss */
+#gfyCtrlBox {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 15%;
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 100%;
+  -webkit-transition: right 0.3s ease;
+  transition: right 0.3s ease;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* line 29, /Users/mattybow/Desktop/tern/gfy-cat/gfy-cat/src/gfy-cat/gfy-cat.scss */
+.gfyCtrl.shown {
+  right: 0; }
+
+/* line 32, /Users/mattybow/Desktop/tern/gfy-cat/gfy-cat/src/gfy-cat/gfy-cat.scss */
+.gfyCtrl.hidden {
+  right: -60px; }
+
+/* line 35, /Users/mattybow/Desktop/tern/gfy-cat/gfy-cat/src/gfy-cat/gfy-cat.scss */
+.default {
+  width: 20px;
+  height: 20px;
+  right: 10px; }
+
+/* line 40, /Users/mattybow/Desktop/tern/gfy-cat/gfy-cat/src/gfy-cat/gfy-cat.scss */
+.clearfix {
+  clear: both; }
+
+/* line 43, /Users/mattybow/Desktop/tern/gfy-cat/gfy-cat/src/gfy-cat/gfy-cat.scss */
+#gfyCtrlBox svg {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-height: 100%; }
+  /* line 45, /Users/mattybow/Desktop/tern/gfy-cat/gfy-cat/src/gfy-cat/gfy-cat.scss */
+  #gfyCtrlBox svg:hover {
+    cursor: pointer; }
+
+/* line 55, /Users/mattybow/Desktop/tern/gfy-cat/gfy-cat/src/gfy-cat/gfy-cat.scss */
+playpause-svg {
+  width: 20%;
+  -webkit-transition: opacity 0.2s ease;
+  -moz-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
+  opacity: 0; }
+
+/* line 62, /Users/mattybow/Desktop/tern/gfy-cat/gfy-cat/src/gfy-cat/gfy-cat.scss */
+playpause-svg.shown {
+  opacity: 1; }
+
+/* line 65, /Users/mattybow/Desktop/tern/gfy-cat/gfy-cat/src/gfy-cat/gfy-cat.scss */
+.speedCtrl {
+  position: relative;
+  display: block; }
+
+/* line 69, /Users/mattybow/Desktop/tern/gfy-cat/gfy-cat/src/gfy-cat/gfy-cat.scss */
+#speed {
+  position: relative;
+  width: 100%;
+  text-align: center; }
+
+/* line 74, /Users/mattybow/Desktop/tern/gfy-cat/gfy-cat/src/gfy-cat/gfy-cat.scss */
+.bttn {
+  -webkit-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
+  opacity: 0.7;
+  padding-right: 10px;
+  padding-left: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  height: 0;
+  padding-bottom: 60%; }
+
+/* line 86, /Users/mattybow/Desktop/tern/gfy-cat/gfy-cat/src/gfy-cat/gfy-cat.scss */
+.gfyCtrl > * {
+  padding-top: 10px;
+  padding-bottom: 10px; }
+
+/* line 91, /Users/mattybow/Desktop/tern/gfy-cat/gfy-cat/src/gfy-cat/gfy-cat.scss */
+.bttn:hover {
+  opacity: 1; }
+
+/* line 94, /Users/mattybow/Desktop/tern/gfy-cat/gfy-cat/src/gfy-cat/gfy-cat.scss */
+.active {
+  background-color: rgba(0, 0, 0, 0.3); }
+
+/*# sourceMappingURL=gfy-cat.css.map */

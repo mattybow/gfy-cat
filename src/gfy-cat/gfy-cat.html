@@ -1,0 +1,358 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="../../src/playpause-svg/playpause-svg.html">
+<polymer-element name="gfy-cat" attributes="src gfyName width color fill strokeWidth ntimes loop">
+	<template>
+		<link rel="stylesheet" href="gfy-cat.css">
+        <template if="{{src}}">
+            <core-ajax url="http://upload.gfycat.com/transcode?fetchUrl={{src | cleanSrcUrl}}" id="gfyAjax" handleAs="json"></core-ajax>
+        </template>
+        <div id="gfyContainer" on-mouseup="{{toggleState}}" on-mouseover="{{hoverHandle}}" on-mouseout="{{hoverOutHandle}}">
+            <video autoplay width="{{ width }}" id="vid" src="//zippy.gfycat.com/{{gfyName}}{{ext}}"></video>
+            <video hidden width="{{ width }}" id="vidReverse" src="//zippy.gfycat.com/{{gfyName}}-reverse{{ext}}"></video>
+            <div class="clearfix"></div>
+            <playpause-svg stroke="{{color}}" class="{{visibility}}" strokeWidth="{{fill ? 0:strokeWidth*.5}}" fill="{{fill ? color:'transparent'}}" id="playPauseSvg"></playpause-svg>
+            <div class="gfyCtrl {{visibility}}" id="gfyCtrlBox" style="-webkit-flex-flow: column nowrap; flex-flow:column nowrap; -webkit-justify-content:space-around; justify-content:space-around;">
+                <div class="speedCtrl">
+                    <div class="bttn" id="up" on-mouseup="{{increaseSpeed}}" title="accelerate playback">
+                        <svg version="1.1" id="speedUp" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 60 60" enable-background="new 0 0 60 60" xml:space="preserve" preserveAspectRatio="meet" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.41421;">
+                            <g>
+                                <g>
+                                    <path fill="{{fill ? color:'transparent'}}" d="M54.368,30L26.3873,49.5821L26.3873,10.4179L54.368,30Z" stroke-width="{{fill ? 0:strokeWidth}}" stroke="{{color}}"/>
+                                </g>
+                                <g>
+                                    <path fill="{{fill ? color:'transparent'}}" d="M23.866,30L5.63198,42.7609L5.63198,17.2391L23.866,30Z" stroke-width="{{fill ? 0:strokeWidth}}" stroke="{{color}}"/>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <div id="speed" _style="color:{{color}}">{{speed}}x</div>
+                    <div class="bttn" id="down" on-mouseup="{{decreaseSpeed}}" title="slow playback">
+                        <svg version="1.1" id="speedDown" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 60 60" enable-background="new 0 0 60 60" xml:space="preserve" preserveAspectRatio="meet" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.41421;"> 
+                            <g>
+                                <g>
+                                    <path fill="{{fill ? color:'transparent'}}" d="M5.63198,30L33.6127,10.4179L33.6127,49.5821L5.63198,30Z" stroke-width="{{fill ? 0:strokeWidth}}" stroke="{{color}}"/>
+                                </g>
+                                <g>
+                                    <path fill="{{fill ? color:'transparent'}}" d="M36.134,29.5376L54.368,16.7767L54.368,42.2985L36.134,29.5376Z" stroke-width="{{fill ? 0:strokeWidth}}" stroke="{{color}}"/>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div id="pingpong">
+                    <div class="bttn" on-mouseup="{{togglePingPong}}" title="pingpong playback">
+                        <svg version="1.1" id="speedDown" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 60 60" enable-background="new 0 0 60 60" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.41421;"> 
+                            <g>
+                                <g>
+                                    <path fill="{{fill ? color:'transparent'}}" d="M45.4798,30L6.04689,53.8893L6.04689,6.11072Z" stroke-width="{{fill ? 0:strokeWidth}}" stroke="{{color}}"/>
+                                </g>
+                                <g>
+                                    <path fill="{{fill ? color:'transparent'}}" d="M14.5202,30L53.9531,6.11072L53.9531,53.8893Z" stroke-width="{{fill ? 0:strokeWidth}}" stroke="{{color}}"/>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>  
+                </div>
+
+                <div id="reverse">
+                    <div class="bttn" on-mouseup="{{reversePlayback}}" title="reverse playback">
+                        <svg version="1.1" id="speedDown" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 60 60" enable-background="new 0 0 60 60" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.41421;"> 
+                            <g>
+                                <g>
+                                    <path fill="{{fill ? color:'transparent'}}" d="M9.44958,30L50.5504,4.44605L50.5504,55.5539L9.44958,30Z" stroke-width="{{fill ? 0:strokeWidth}}" stroke="{{color}}"/>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                
+            </div>
+            <content></content>
+        </div>
+	</template>
+	<script>
+		Polymer('gfy-cat', {
+            created:function(){
+                this.gfyName="";
+                this.width="";
+                this.speed=1;
+                this.color="#eee";
+                this.visibility="hidden";
+                this.fill=false;
+                this.strokeWidth=3;
+                this.playMode='forward';
+                this.pingPongActive=false;
+                this.src='';
+                this.getExt();
+                this.state='play';
+                this.playCount=0;
+                this.ntimes=3;
+            },
+            ready:function(){
+                console.log(this.loop);
+                if(this.loop!==undefined){
+                    this.addLoopAttr();
+                }
+                /*this.$.vid.addEventListener('play',function(){
+                    //this.startCounting();
+                }.bind(this));
+                this.$.vidReverse.addEventListener('play',function(){
+                    //this.startCounting();
+                }.bind(this));*/
+                this.$.vid.addEventListener('ended',function(){
+                    //console.log('forward ended');
+                    this.nextAction();
+                }.bind(this));
+                this.$.vidReverse.addEventListener('ended',function(){
+                    //console.log('reverse ended');
+                    this.nextAction();
+                }.bind(this));
+                if(this.src && !this.src.match(/(\.gifv|\.webm|\.mp4)$/)){          //if src defined, that's not a video, fetch converted gfyName
+                    this.$.gfyAjax.addEventListener("core-response", function(e) {
+                            this.gfyName=e.detail.response.gfyName;
+                        }.bind(this));
+                    this.$.gfyAjax.go();
+                }
+            },
+            addLoopAttr:function(){
+                this.$.vid.setAttribute('loop','true');
+                this.$.vidReverse.setAttribute('loop','true');
+                this.ntimes=100;
+            },
+            nextAction:function(){
+                this.incrementPlayCount();
+                //console.log("video should:" + this.state);
+                if(this.pingPongActive && this.state==='play'){
+                    this.reversePlayback();
+                } else if (this.state==='play'){
+                    this.rePlay();                                                  //replay video if the state is still play
+                }
+            },
+
+            incrementPlayCount:function(){
+                this.playCount++;
+                console.log("playCount=" + this.playCount,"endCount="+this.ntimes);
+                var userIntervention = this.interrupt;                              //make copy of interrupt flag because pauseVid will clear flag
+                if(this.playCount===this.ntimes || userIntervention){
+                    this.pauseVid();
+                    if(userIntervention){
+                        this.playVid(true);                                         //if user has pressed a control during playback, reset the playCount
+                    }
+                }
+            },
+            resetPlayCount:function(){
+                this.playCount=0;
+            },
+            clearInterrupt:function(){
+                this.interrupt = false;
+            },
+            pingPongActiveChanged:function(){
+                this.toggleNTimes();
+                console.log('ntimes changed, now:'+this.ntimes);
+            },
+
+            toggleNTimes:function(){
+                if(this.pingPongActive){
+                    this.ntimes *=2;                                                //back to front count as 1 playCount
+                } else {
+                    this.ntimes /=2;
+                }
+            },
+
+            getExt:function(){
+                var testVid = document.createElement('video');
+                switch (true){
+                    case testVid.canPlayType('video/mp4')!="":
+                        this.ext='.mp4';
+                        break;
+                    case testVid.canPlayType('video/webm')!="":
+                        this.ext='.webm';
+                        break;
+                }
+            },
+            cleanSrcUrl:function(url){
+                return url.replace(/http:\/\//,'');
+            },
+            showCtrls:function(e,d,s){
+                this.visibility='shown';
+                if(this.hideTimeOut){
+                    clearTimeout(this.hideTimeOut);
+                }
+                this.hideTimeOut=setTimeout(this.hideCtrls.bind(this),3000);
+            },
+            hideCtrls:function(){
+                this.visibility='hidden';
+                this.hideTimeOut=undefined;
+            },
+            hoverHandle:function(e,d,s){
+                if(!this.isMobile()){
+                    if(!this.hideTimeOut){
+                        this.showCtrls();
+                    }  
+                    clearTimeout(this.hideTimeOut);                 //let the mouseout event hide the ctrls
+                }
+            },
+            isMobile:function(){
+                return (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+            },
+            hoverOutHandle:function(){
+                if(this.hideTimeOut){
+                    clearTimeout(this.hideTimeOut);
+                }
+                this.hideTimeOut=setTimeout(this.hideCtrls.bind(this),400);
+            },
+            mobileCtrlReset:function(){
+                if(this.isMobile()){
+                    this.showCtrls();                               //for mobile resets the timeout to hide ctrls
+                }
+            },
+            autoResume:function(reset){
+                if(this.state==='pause'){                           //resumes vid playback
+                    this.playVid(reset);                            //reset false, resume playback from where it left off, reset true, playback from beginning
+                } else {                                            //play was already in motion, interrupt flag true will reset counter on 'ended' event so user sees full ntimes of playback with the changes requested (speed, pingpong, reverse)
+                    this.interrupt = true;
+                }
+            },
+            increaseSpeed:function(e,d,s){
+                e.stopPropagation();
+                this.mobileCtrlReset();
+                if(this.speed<1){
+                    this.speed *= 2;
+                } else {
+                    this.speed += .5;
+                }
+                this.$.vid.playbackRate=this.speed;
+                this.$.vidReverse.playbackRate=this.speed;
+                this.autoResume(false);                             //do not reset playcount or rewind
+            },
+            decreaseSpeed:function(e,d,s){
+                e.stopPropagation();
+                this.mobileCtrlReset();
+                if(this.speed<1){
+                    this.speed /= 2;
+                } else {
+                    this.speed -= .5;
+                }
+                this.$.vid.playbackRate=this.speed;
+                this.$.vidReverse.playbackRate=this.speed;
+                this.autoResume(false);
+            },
+            reversePlayback:function(e,d,s){
+                if(this.playMode === 'reverse'){
+                    this.playMode = 'forward';
+                    console.log('play forward');
+                } else {
+                    this.playMode = 'reverse';
+                    console.log('play backward');
+                }
+
+                if(e) {
+                    e.stopPropagation();
+                    this.mobileCtrlReset();
+                    this.updateReverseUI();
+                    if(this.pingPongActive){
+                        this.deactivatePingPong();
+                        this.playMode='reverse';                                //when pingpong is cancelled by activation of reverse playback, update the ui
+                        this.updateReverseUI();
+                    }
+                }
+                
+            },
+            updateReverseUI:function(forceState){
+                if(this.playMode==='forward' || forceState===false){
+                    this.$.reverse.classList.remove('active');
+                } else {
+                    this.$.reverse.classList.add('active');
+                }
+            },
+            rePlay:function(){
+                this.playVid();
+            },
+
+            togglePingPong:function(e,d,s){
+                e.stopPropagation();
+                this.mobileCtrlReset();
+                if(this.pingPongActive){
+                    this.deactivatePingPong();
+                    if(this.playMode!=='forward') this.playMode='forward';      //when pingpong is explicitly cancelled, forward mode playback is initiated
+                } else {
+                    this.activatePingPong();
+                }
+            },
+            activatePingPong:function(){
+                this.pingPongActive=true;
+                this.$.pingpong.classList.add('active');
+                this.autoResume(true);                                          //autoPlays or triggers interrupt
+                this.updateReverseUI(false);                                    //forces reverse UI control to deactivate
+                this.removeLoop();
+            },
+            deactivatePingPong:function(){
+                this.pingPongActive=false;
+                this.$.pingpong.classList.remove('active');
+                this.autoResume(true);
+            },
+            removeLoop:function(){
+                this.$.vid.removeAttribute('loop');
+                this.$.vidReverse.removeAttribute('loop');
+            },
+            playModeChanged:function(){
+                var reset = !this.pingPongActive;
+                this.playVid(reset);
+            },
+            playVid:function(reset){
+                if(reset){
+                    this.clearInterrupt();
+                    this.resetPlayCount();
+                    this.rewind();
+                }
+                if(this.playMode==='forward'){
+                    this.$.vidReverse.pause();
+                    this.$.vid.play();
+                    this.$.vidReverse.setAttribute('hidden',"true");
+                    this.$.vid.removeAttribute('hidden');  
+                } else {
+                    this.$.vid.pause();
+                    this.$.vidReverse.play();
+                    this.$.vid.setAttribute('hidden',"true");
+                    this.$.vidReverse.removeAttribute('hidden');
+                }
+                this.state='play';
+            },
+            pauseVid:function(){
+                this.resetPlayCount();
+                if(this.playMode==='forward'){
+                    this.$.vid.pause();
+                } else {
+                    this.$.vidReverse.pause();
+                }
+                this.state='pause';
+            },
+            rewind:function(){
+                if(this.playMode==='forward'){
+                    this.$.vid.currentTime=0;
+                } else {
+                    this.$.vidReverse.currentTime=0;
+                }
+            },
+            stateChanged:function(attrName, oldVal, newVal){
+                this.triggerToggleEvent();
+            },
+            toggleState:function(e,d,s){
+                if(!this.hideTimeOut) this.showCtrls();                //for mobile case
+                if(this.state==='play' || this.state === undefined){
+                    this.pauseVid();
+                } else if (this.state ==='pause') {
+                    this.playVid();
+                }
+            },
+            triggerToggleEvent:function(){
+                var that = this;
+                [].forEach.call(this.shadowRoot.querySelectorAll('playpause-svg'),function(el,i){
+                    el.fire('togglePlay',{state:that.state});
+                }); 
+            }
+
+		});
+	</script>
+</polymer-element>

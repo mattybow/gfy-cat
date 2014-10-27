@@ -1,0 +1,96 @@
+:host {
+	display: block;
+	text-align:center;
+}
+video{
+	float:left;
+	height:auto;
+}
+#gfyContainer{
+	position:relative;
+	display:inline-block;
+	overflow:hidden;
+}
+#gfyCtrlBox{
+	position:absolute;
+	top:0;
+	bottom:0;
+	width:15%;
+	background-color: rgba(0,0,0,.4);
+	height:100%;
+	-webkit-transition:right .3s ease;
+	transition:right .3s ease;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.gfyCtrl.shown{
+	right:0;
+}
+.gfyCtrl.hidden{
+	right:-60px;
+}
+.default{
+	width:20px;
+	height:20px;
+	right:10px;
+}
+.clearfix{
+	clear:both;
+}
+#gfyCtrlBox svg{
+	display:block;
+	&:hover{
+		cursor:pointer;
+	}
+	position:absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	max-height: 100%;
+
+}
+playpause-svg{
+	width:20%;
+	-webkit-transition: opacity .2s ease;
+    -moz-transition: opacity .2s ease;
+    transition: opacity .2s ease;
+	opacity:0;
+}
+playpause-svg.shown{
+	opacity:1;
+}
+.speedCtrl{
+	position:relative;
+	display:block;
+}
+#speed{
+	position:relative;
+	width:100%;
+	text-align:center;
+}
+.bttn{
+	-webkit-transition:opacity .2s ease;
+	transition:opacity .2s ease;
+	opacity:.7;
+	padding-right:10px;
+	padding-left:10px;
+	width: 100%;
+	box-sizing: border-box;
+	position:relative;
+	height:0;
+	padding-bottom:60%;
+}
+.gfyCtrl>*{
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+.bttn:hover{
+	opacity:1;
+}
+.active{
+	background-color:rgba(0,0,0,.3);
+}

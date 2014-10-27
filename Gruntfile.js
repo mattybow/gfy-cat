@@ -1,42 +1,71 @@
 module.exports = function(grunt) {
-
+    require('time-grunt')(grunt);
+    require('load-grunt-tasks')(grunt);
     grunt.initConfig({
-        'connect': {
-            demo: {
-                options: {
-                    open: true,
-                    keepalive: true
+        connect: {
+            server:{
+                options:{
+                    port:4000,
+                    livereload:true
                 }
             }
         },
         'gh-pages': {
             options: {
-                clone: 'bower_components/my-repo'
             },
             src: [
                 'bower_components/**/*',
                 '!bower_components/my-repo/**/*',
-                'demo/*', 'src/*', 'index.html'
+                'css/*','src/**/*', 'index.html'
             ]
         },
-        'replace': {
-            example: {
-                src: ['src/*'],
-                dest: 'dist/',
-                replacements: [{
-                    from: 'bower_components',
-                    to: '..'
-                }]
+        vulcanize: {
+            default: {
+                options: {
+                    strip: true
+                },
+                files: {
+                    'dist/gfy-cat.vulcanized.html':'src/elements.html'
+                }
             }
+        },
+        sass: {
+          dist: {
+            options: {
+              style: 'compressed',
+              sourceMap: true,
+            },
+            files: [{
+              expand: true,
+              cwd:'.',
+              src: ['src/{,*/}*.{scss,sass}'],
+              dest: '.',
+              ext: '.css'
+            }]
+          }
+        },
+        exec: {
+            sass:{
+                cmd: 'grunt sass:dist'
+            }
+        },
+        watch:{
+            options:{
+                livereload:true
+            },
+            files:[
+                "src/**/*.scss",
+                "*.html",
+                "*.md",
+            ],
+            tasks:[
+                "exec:sass"
+            ]
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-connect');
-    grunt.loadNpmTasks('grunt-gh-pages');
-    grunt.loadNpmTasks('grunt-text-replace');
-
-    grunt.registerTask('build',  ['replace']);
+    grunt.registerTask('build',  ['sass','vulcanize']);
     grunt.registerTask('deploy', ['gh-pages']);
-    grunt.registerTask('server', ['connect']);
+    grunt.registerTask('serve', ['build','connect','watch']);
 
 };
