@@ -1,24 +1,20 @@
-# &lt;my-repo&gt;
+# &lt;gfy-cat&gt;
 
-> A bare minimum custom element starter-kit using [Polymer](http://www.polymer-project.org/).
->
-> Like [Yeoman](http://yeoman.io/)? Use the [generator-element](https://www.npmjs.org/package/generator-element) instead.
->
-> Looking for a working example? Check [hello-world-polymer](https://github.com/webcomponents/hello-world-polymer).
+a polymer web-component for displaying gifs thru [gfycat](http://gfycat.com/)'s conversion service
 
 ## Demo
 
-[Check it live!](http://my-user.github.io/my-repo)
+[Check it live!](http://mattybow.github.io/gfy-cat)
 
 ## Install
 
 Install the component using [Bower](http://bower.io/):
 
 ```sh
-$ bower install my-repo --save
+$ bower install gfy-cat --save
 ```
 
-Or [download as ZIP](https://github.com/my-user/my-repo/archive/master.zip).
+Or [download as ZIP](https://github.com/mattybow/gfy-cat/archive/master.zip).
 
 ## Usage
 
@@ -31,13 +27,13 @@ Or [download as ZIP](https://github.com/my-user/my-repo/archive/master.zip).
 2. Import Custom Element:
 
     ```html
-    <link rel="import" href="bower_components/my-repo/dist/my-element.html">
+    <link rel="import" href="bower_components/gfy-cat/dist/gfy-cat.html">
     ```
 
 3. Start using it!
 
     ```html
-    <my-element></my-element>
+    <gfy-cat></gfy-cat>
     ```
 
 ## Options
