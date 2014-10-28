@@ -1,0 +1,75 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<polymer-element name="playpause-svg" attributes="stroke strokeWidth fill">
+	<template>
+		<link rel="stylesheet" href="playpause-svg.css">
+		<div class="playpause-container">
+			<div class="play-container present" id="play">
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 60 60" enable-background="new 0 0 60 60" xml:space="preserve" id="playPauseCtrl">
+					<g>
+						<path d="M50.5504,30L9.44958,55.5539L9.44958,4.44605L50.5504,30Z" stroke="{{stroke}}" stroke-width="{{strokeWidth}}" stroke-linecap="round" stroke-linejoin="round" fill="{{fill}}" vector-effect="non-scaling-stroke"/>
+					</g>
+				</svg>
+			</div>
+			<div class="pause-container future" id="pause">
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 60 60" enable-background="new 0 0 60 60" xml:space="preserve" id="playPauseCtrl">
+					<g>
+			            <g>
+			                <rect x="6.67827" y="6.375" width="20.3217" height="47.25" stroke="{{stroke}}" stroke-width="{{strokeWidth}}" stroke-linecap="round" stroke-linejoin="round" fill="{{fill}}" vector-effect="non-scaling-stroke"/>
+			            </g>
+			            <g>
+			                <rect x="33" y="6.375" width="20.3217" height="47.25" stroke="{{stroke}}" stroke-width="{{strokeWidth}}" stroke-linecap="round" stroke-linejoin="round" fill="{{fill}}" vector-effect="non-scaling-stroke"/>
+			            </g>
+			        </g>
+				</svg>
+			</div>
+			<div class="dummy">
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 60 60" enable-background="new 0 0 60 60" xml:space="preserve" id="playPauseCtrl">
+					<g>
+			            <g>
+			                <rect x="6.67827" y="6.375" width="20.3217" height="47.25" stroke="{{stroke}}" stroke-width="{{strokeWidth}}" stroke-linecap="round" stroke-linejoin="round" fill="{{fill}}" vector-effect="non-scaling-stroke"/>
+			            </g>
+			            <g>
+			                <rect x="33" y="6.375" width="20.3217" height="47.25" stroke="{{stroke}}" stroke-width="{{strokeWidth}}" stroke-linecap="round" stroke-linejoin="round" fill="{{fill}}" vector-effect="non-scaling-stroke"/>
+			            </g>
+			        </g>
+				</svg>
+			</div>
+		</div>
+		<toggle-play></toggle-play>
+	</template>
+	<script>
+		Polymer('playpause-svg', {
+			created:function(){
+				this.stroke="#555";
+				this.strokeWidth=3;
+				this.fill="transparent";
+			},
+			ready:function(){
+				//console.log(this.$.playPauseCtrl);
+				this.addEventListener('togglePlay',this.togglePlay);
+			},
+
+			togglePlay:function(e){
+				if(e.detail.state==='play'){
+					this.playAnim();
+				} else {
+					this.pauseAnim();
+				}
+			},
+
+			pauseAnim:function(){
+				this.$.play.classList.remove('present');
+				this.$.play.classList.add('past');
+				this.$.pause.classList.remove('future');
+				this.$.pause.classList.add('present');
+			},
+
+			playAnim:function(){
+				this.$.play.classList.remove('past');
+				this.$.play.classList.add('present');
+				this.$.pause.classList.remove('present');
+				this.$.pause.classList.add('future');
+			}
+		});
+	</script>
+</polymer-element>

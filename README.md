@@ -18,29 +18,28 @@ Or [download as ZIP](https://github.com/mattybow/gfy-cat/archive/master.zip).
 
 ## Usage
 
-1. Import Web Components' polyfill:
-
     ```html
-    <script src="bower_components/platform/platform.js"></script>
-    ```
-
-2. Import Custom Element:
-
-    ```html
-    <link rel="import" href="bower_components/gfy-cat/dist/gfy-cat.html">
-    ```
-
-3. Start using it!
-
-    ```html
-    <gfy-cat></gfy-cat>
+    <head>
+        <script src="bower_components/platform/platform.js"></script>
+        <link rel="import" href="bower_components/gfy-cat/dist/gfy-cat.html">
+    </head>
+    <body>
+        <gfy-cat></gfy-cat>
+    </body>
     ```
 
 ## Options
 
-Attribute     | Options     | Default      | Description
----           | ---         | ---          | ---
-`foo`         | *string*    | `bar`        | Lorem ipsum dolor.
+Attribute       | Options           | Default      | Description
+---             | ---               | ---          | ---
+`src`           | *string*          | ``           | .gif source url
+`gfyName`       | *string*          | ``           | gfyName returned by gfycat.com _example:CostlyAfraidEmu_
+`width`         | *% or px*         | `100%`       | size you want the element
+`color`         | *hex rbg or rgba* | `#eee`       | the color of the contols and the text
+`fill`          | *true or false*   | `false`      | true means a solid filled in polygon, false will be a path
+`strokeWidth`   | *integer*         | `3`          | controls the line width if you have fill attribute set to true
+`ntimes`        | *integer*         | `3`          | if not specified, animation will loop 3 times then pause, user can playback at will
+`loop`          | *true or false*    | `false`     | video will loop infinitely until paused or pingpong is activated in which case ntimes is set to 100
 
 ## Methods
 
@@ -70,10 +69,10 @@ In order to run it locally you'll need to fetch some dependencies and a basic se
     $ bower install && npm install
     ```
 
-* To test your project, start the development server and open `http://localhost:8000`.
+* To test your project, start the development server and open `http://localhost:4000`.
 
     ```sh
-    $ grunt server
+    $ grunt serve
     ```
 
 * To build the distribution files before releasing a new version.
@@ -98,7 +97,7 @@ In order to run it locally you'll need to fetch some dependencies and a basic se
 
 ## History
 
-For detailed changelog, check [Releases](https://github.com/my-user/my-repo/releases).
+For detailed changelog, check [Releases](https://github.com/mattybow/gfy-cat/releases).
 
 ## License
 

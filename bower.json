@@ -1,9 +1,12 @@
 {
-  "name": "my-repo",
+  "name": "gfy-cat",
   "version": "0.0.0",
-  "description": "My awesome Custom Element",
+  "description": "displaying a gif src as a html5 video element through polymer webcomponent",
   "license": "MIT",
-  "main": "dist/my-element.html",
+  "authors": [
+    "Matt Bow <mattybow@gmail.com>"
+  ],
+  "main": "dist/gfy-cat/gfy-cat.html",
   "keywords": [
     "polymer",
     "web-components",
@@ -23,6 +26,7 @@
   },
   "devDependencies": {
     "bootstrap": "~3.2.0",
-    "modernizr": "~2.8.3"
+    "modernizr": "~2.8.3",
+    "x-gif": "~0.1.1"
   }
 }

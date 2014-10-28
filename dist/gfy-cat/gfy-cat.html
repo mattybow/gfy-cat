@@ -90,13 +90,22 @@
                 this.ntimes=3;
             },
             ready:function(){
+                console.log(this.loop);
                 if(this.loop!==undefined){
                     this.addLoopAttr();
                 }
+                /*this.$.vid.addEventListener('play',function(){
+                    //this.startCounting();
+                }.bind(this));
+                this.$.vidReverse.addEventListener('play',function(){
+                    //this.startCounting();
+                }.bind(this));*/
                 this.$.vid.addEventListener('ended',function(){
+                    //console.log('forward ended');
                     this.nextAction();
                 }.bind(this));
                 this.$.vidReverse.addEventListener('ended',function(){
+                    //console.log('reverse ended');
                     this.nextAction();
                 }.bind(this));
                 if(this.src && !this.src.match(/(\.gifv|\.webm|\.mp4)$/)){          //if src defined, that's not a video, fetch converted gfyName
@@ -123,7 +132,7 @@
 
             incrementPlayCount:function(){
                 this.playCount++;
-                //console.log("playCount=" + this.playCount,"endCount="+this.ntimes);
+                console.log("playCount=" + this.playCount,"endCount="+this.ntimes);
                 var userIntervention = this.interrupt;                              //make copy of interrupt flag because pauseVid will clear flag
                 if(this.playCount===this.ntimes || userIntervention){
                     this.pauseVid();

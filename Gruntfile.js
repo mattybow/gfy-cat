@@ -15,8 +15,11 @@ module.exports = function(grunt) {
             },
             src: [
                 'bower_components/**/*',
-                '!bower_components/my-repo/**/*',
-                'css/*','src/**/*', 'index.html'
+                '!bower_components/core*/**/*',
+                '!bower_components/paper*/**/*',
+                '!bower_components/gfy-cat/**/*',
+                'images/*',
+                'css/*','src/**/*', 'gfy-cat-demo.vulcanized.html','index.html'
             ]
         },
         vulcanize: {
@@ -25,8 +28,15 @@ module.exports = function(grunt) {
                     strip: true
                 },
                 files: {
-                    'dist/gfy-cat.vulcanized.html':'src/elements.html'
+                    'gfy-cat-demo.vulcanized.html':'src/demo.html'
                 }
+            }
+        },
+        copy:{
+            main:{
+                files:[
+                    {expand:true, cwd:'src/', src:['gfy-cat/**','playpause-svg/**','!**/*.scss'], dest:'dist/'}
+                ]
             }
         },
         sass: {
@@ -66,7 +76,7 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('build',  ['sass','vulcanize']);
-    grunt.registerTask('deploy', ['gh-pages']);
+    grunt.registerTask('deploy', ['copy','gh-pages']);
     grunt.registerTask('serve', ['build','connect','watch']);
 
 };
