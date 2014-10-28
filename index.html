@@ -28,6 +28,11 @@
         <![endif]-->
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="ribbon-clip">
+    	<div class="ribbon">
+		  <a href="//github.com/mattybow/gfy-cat">Fork me on GitHub</a>
+		</div>
+    </div>
     <div class="jumbotron">
       <div class="container">
         <h1>&lt;gfy-cat&gt;</h1>
@@ -43,16 +48,17 @@
 			<!-- Using Custom Elements -->
     		<gfy-cat src="http://media2.giphy.com/media/BP9eSu9cnnGN2/giphy.gif" width="100%" color="rgba(255,255,255,0.5)" fill="true" loop></gfy-cat>
         </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        <div class="col-md-6 col-md-offset-1">
+        	<div class="row">
+				<h2 class="no-top-mar">example 1</h2>
+				<p>src attribute contains the valid url to a .gif which then fetches the gfy-cat gfyName tied to the converted media asset</p>
+				<p>loops infinitely if loop attribute is specified</p>
+				<p>controls filled with transparent color</p>
+				<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+			</div>
+        	<div class="row"><script src="https://gist.github.com/mattybow/5da2f792c79bc2402a57.js"></script></div>
+			
        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
       </div>
 
       <hr>
