@@ -18,15 +18,15 @@ Or [download as ZIP](https://github.com/mattybow/gfy-cat/archive/master.zip).
 
 ## Usage
 
-    ```html
-    <head>
-        <script src="bower_components/platform/platform.js"></script>
-        <link rel="import" href="bower_components/gfy-cat/dist/gfy-cat.html">
-    </head>
-    <body>
-        <gfy-cat></gfy-cat>
-    </body>
-    ```
+```html
+<head>
+    <script src="bower_components/platform/platform.js"></script>
+    <link rel="import" href="bower_components/gfy-cat/dist/gfy-cat.html">
+</head>
+<body>
+    <gfy-cat></gfy-cat>
+</body>
+```
 
 ## Options
 
