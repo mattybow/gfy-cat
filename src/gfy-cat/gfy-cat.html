@@ -7,21 +7,21 @@
         <template if="{{src}}">
             <core-ajax url="http://upload.gfycat.com/transcode?fetchUrl={{src | cleanSrcUrl}}" id="gfyAjax" handleAs="json"></core-ajax>
         </template>
-        <div id="gfyContainer" on-mouseup="{{toggleState}}" on-mouseover="{{hoverHandle}}" on-mouseout="{{hoverOutHandle}}">
-            <video autoplay width="{{ width }}" id="vid" src="//zippy.gfycat.com/{{gfyName}}{{ext}}"></video>
-            <video hidden width="{{ width }}" id="vidReverse" src="//zippy.gfycat.com/{{gfyName}}-reverse{{ext}}"></video>
+        <div id="gfyContainer" _style="width:{{ width }};" on-mouseup="{{toggleState}}" on-mouseover="{{hoverHandle}}" on-mouseout="{{hoverOutHandle}}">
+            <video autoplay width="100%" id="vid" src="//zippy.gfycat.com/{{gfyName}}{{ext}}"></video>
+            <video hidden width="100%" id="vidReverse" src="//zippy.gfycat.com/{{gfyName}}-reverse{{ext}}"></video>
             <div class="clearfix"></div>
-            <playpause-svg stroke="{{color}}" class="{{visibility}}" strokeWidth="{{fill ? 0:strokeWidth*.5}}" fill="{{fill ? color:'transparent'}}" id="playPauseSvg"></playpause-svg>
+            <playpause-svg stroke="{{color}}" class="{{visibility}}" strokeWidth="{{fill ? 0:strokeWidth}}" fill="{{fill ? color:'transparent'}}" id="playPauseSvg"></playpause-svg>
             <div class="gfyCtrl {{visibility}}" id="gfyCtrlBox" style="-webkit-flex-flow: column nowrap; flex-flow:column nowrap; -webkit-justify-content:space-around; justify-content:space-around;">
                 <div class="speedCtrl">
                     <div class="bttn" id="up" on-mouseup="{{increaseSpeed}}" title="accelerate playback">
                         <svg version="1.1" id="speedUp" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 60 60" enable-background="new 0 0 60 60" xml:space="preserve" preserveAspectRatio="meet" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.41421;">
                             <g>
                                 <g>
-                                    <path fill="{{fill ? color:'transparent'}}" d="M54.368,30L26.3873,49.5821L26.3873,10.4179L54.368,30Z" stroke-width="{{fill ? 0:strokeWidth}}" stroke="{{color}}"/>
+                                    <path fill="{{fill ? color:'transparent'}}" d="M54.368,30L26.3873,49.5821L26.3873,10.4179L54.368,30Z" stroke-width="{{fill ? 0:strokeWidth}}" stroke="{{color}}" vector-effect="non-scaling-stroke"/>
                                 </g>
                                 <g>
-                                    <path fill="{{fill ? color:'transparent'}}" d="M23.866,30L5.63198,42.7609L5.63198,17.2391L23.866,30Z" stroke-width="{{fill ? 0:strokeWidth}}" stroke="{{color}}"/>
+                                    <path fill="{{fill ? color:'transparent'}}" d="M23.866,30L5.63198,42.7609L5.63198,17.2391L23.866,30Z" stroke-width="{{fill ? 0:strokeWidth}}" stroke="{{color}}" vector-effect="non-scaling-stroke"/>
                                 </g>
                             </g>
                         </svg>
@@ -31,10 +31,10 @@
                         <svg version="1.1" id="speedDown" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 60 60" enable-background="new 0 0 60 60" xml:space="preserve" preserveAspectRatio="meet" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.41421;"> 
                             <g>
                                 <g>
-                                    <path fill="{{fill ? color:'transparent'}}" d="M5.63198,30L33.6127,10.4179L33.6127,49.5821L5.63198,30Z" stroke-width="{{fill ? 0:strokeWidth}}" stroke="{{color}}"/>
+                                    <path fill="{{fill ? color:'transparent'}}" d="M5.63198,30L33.6127,10.4179L33.6127,49.5821L5.63198,30Z" stroke-width="{{fill ? 0:strokeWidth}}" stroke="{{color}}" vector-effect="non-scaling-stroke"/>
                                 </g>
                                 <g>
-                                    <path fill="{{fill ? color:'transparent'}}" d="M36.134,29.5376L54.368,16.7767L54.368,42.2985L36.134,29.5376Z" stroke-width="{{fill ? 0:strokeWidth}}" stroke="{{color}}"/>
+                                    <path fill="{{fill ? color:'transparent'}}" d="M36.134,29.5376L54.368,16.7767L54.368,42.2985L36.134,29.5376Z" stroke-width="{{fill ? 0:strokeWidth}}" stroke="{{color}}" vector-effect="non-scaling-stroke"/>
                                 </g>
                             </g>
                         </svg>
@@ -45,10 +45,10 @@
                         <svg version="1.1" id="speedDown" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 60 60" enable-background="new 0 0 60 60" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.41421;"> 
                             <g>
                                 <g>
-                                    <path fill="{{fill ? color:'transparent'}}" d="M45.4798,30L6.04689,53.8893L6.04689,6.11072Z" stroke-width="{{fill ? 0:strokeWidth}}" stroke="{{color}}"/>
+                                    <path fill="{{fill ? color:'transparent'}}" d="M45.4798,30L6.04689,53.8893L6.04689,6.11072Z" stroke-width="{{fill ? 0:strokeWidth}}" stroke="{{color}}" vector-effect="non-scaling-stroke"/>
                                 </g>
                                 <g>
-                                    <path fill="{{fill ? color:'transparent'}}" d="M14.5202,30L53.9531,6.11072L53.9531,53.8893Z" stroke-width="{{fill ? 0:strokeWidth}}" stroke="{{color}}"/>
+                                    <path fill="{{fill ? color:'transparent'}}" d="M14.5202,30L53.9531,6.11072L53.9531,53.8893Z" stroke-width="{{fill ? 0:strokeWidth}}" stroke="{{color}}" vector-effect="non-scaling-stroke"/>
                                 </g>
                             </g>
                         </svg>
@@ -60,7 +60,7 @@
                         <svg version="1.1" id="speedDown" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 60 60" enable-background="new 0 0 60 60" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.41421;"> 
                             <g>
                                 <g>
-                                    <path fill="{{fill ? color:'transparent'}}" d="M9.44958,30L50.5504,4.44605L50.5504,55.5539L9.44958,30Z" stroke-width="{{fill ? 0:strokeWidth}}" stroke="{{color}}"/>
+                                    <path fill="{{fill ? color:'transparent'}}" d="M9.44958,30L50.5504,4.44605L50.5504,55.5539L9.44958,30Z" stroke-width="{{fill ? 0:strokeWidth}}" stroke="{{color}}" vector-effect="non-scaling-stroke"/>
                                 </g>
                             </g>
                         </svg>
@@ -75,7 +75,7 @@
 		Polymer('gfy-cat', {
             created:function(){
                 this.gfyName="";
-                this.width="";
+                this.width="100%";
                 this.speed=1;
                 this.color="#eee";
                 this.visibility="hidden";

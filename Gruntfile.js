@@ -55,6 +55,7 @@ module.exports = function(grunt) {
             },
             files:[
                 "src/**/*.scss",
+                "src/**/*.html",
                 "*.html",
                 "*.md",
             ],
