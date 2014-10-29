@@ -117,3 +117,6 @@ a:hover{
 .imageholder img, .imageholder x-gif{
 	height:150px;
 }
+x-gif::shadow .frame{
+	height:150px;
+}
