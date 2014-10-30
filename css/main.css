@@ -29,7 +29,7 @@ a:hover{
   white-space: nowrap;
   position:relative;
   right:-50px;
-  top:40px;
+  top:35px;
   -webkit-transform: rotate(45deg);
      -moz-transform: rotate(45deg);
       -ms-transform: rotate(45deg);
@@ -68,11 +68,10 @@ a:hover{
 .browsers{
 	white-space:nowrap;
 	margin-top:10px;
-	text-align: right;
 }
 .browsers>svg{
-	width: 15%;
-	height: 15%;
+	width: 10%;
+	height: 10%;
 	margin-left:5px;
 	margin-right:5px;
 }
@@ -90,13 +89,27 @@ a:hover{
 	-webkit-align-items:center;
 	align-items:center;
 }
-.flexbox a{
+.flexbox>a{
 	display:-webkit-flex;
 	display:flex;
 	margin-right:5px;
 }
 .browser-info{
-	margin-bottom:60px;
+	margin-bottom:30px;
+}
+.browser-icons{
+	text-align: center;
+}
+@media (min-width: 992px) {
+	.browser-icons{
+		text-align: right;
+	}
+	.mobile-info .col-md-1{
+		text-align:right;
+	}
+	.mobile-info .col-md-1 h4{
+		line-height: 1.4;
+	}
 }
 .link-info>*{
 	padding: 40px 30px;
@@ -106,6 +119,9 @@ a:hover{
 }
 .link-info>*:hover{
 	background-color: #DFDFDF;
+}
+.info{
+	margin-top:20px;
 }
 .info hr{
 	margin-top:40px;
@@ -119,4 +135,17 @@ a:hover{
 }
 x-gif::shadow .frame{
 	height:150px;
+}
+.mobile-info a{
+	display:inline-block;
+}
+
+.mobile-info .row{
+	margin-top:20px;
+}
+a.link{
+	padding: 2px 4px;
+	font-size: 95%;
+	color: #32408F;
+	border-bottom:1px dotted #32408F;
 }

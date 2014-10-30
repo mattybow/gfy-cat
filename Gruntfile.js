@@ -19,7 +19,7 @@ module.exports = function(grunt) {
                 '!bower_components/paper*/**/*',
                 '!bower_components/gfy-cat/**/*',
                 'images/*',
-                'css/*','src/**/*', 'gfy-cat-demo.vulcanized.html','index.html'
+                'css/*','src/**/*', 'gfy-cat-demo.vulcanized.html','index.html','favicon.ico'
             ]
         },
         vulcanize: {
