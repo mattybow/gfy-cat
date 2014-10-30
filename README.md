@@ -4,7 +4,7 @@ a polymer web-component for displaying gifs thru [gfycat](http://gfycat.com/)'s 
 
 ## Demo
 
-[Check it live!](http://mattybow.github.io/gfy-cat)
+[See this working here](http://mattybow.github.io/gfy-cat)
 
 ## Install
 
@@ -28,12 +28,14 @@ Or [download as ZIP](https://github.com/mattybow/gfy-cat/archive/master.zip).
 </body>
 ```
 
+Use, [grunt-vulcanize](https://github.com/Polymer/grunt-vulcanize) to reduce network requests
+
 ## Options
 
 Attribute       | Options           | Default      | Description
 ---             | ---               | ---          | ---
-`src`           | *string*          | ``           | .gif source url
-`gfyName`       | *string*          | ``           | gfyName returned by gfycat.com _example:CostlyAfraidEmu_
+`src`           | *string*          | `''`         | .gif source url
+`gfyName`       | *string*          | `''`         | gfyName returned by gfycat.com _example:CostlyAfraidEmu_
 `width`         | *% or px*         | `100%`       | size you want the element
 `color`         | *hex rbg or rgba* | `#eee`       | the color of the contols and the text
 `fill`          | *true or false*   | `false`      | true means a solid filled in polygon, false will be a path
@@ -41,17 +43,8 @@ Attribute       | Options           | Default      | Description
 `ntimes`        | *integer*         | `3`          | if not specified, animation will loop 3 times then pause, user can playback at will
 `loop`          | *true or false*    | `false`     | video will loop infinitely until paused or pingpong is activated in which case ntimes is set to 100
 
-## Methods
-
-Method        | Parameters   | Returns     | Description
----           | ---          | ---         | ---
-`unicorn()`   | None.        | Nothing.    | Magic stuff appears.
-
-## Events
-
-Event         | Description
----           | ---
-`onsomething` | Triggers when something happens.
+## Compatibility
+Please see bottom of the [demo](http://mattybow.github.io/gfy-cat) on notes about iOS safari fallbacks
 
 ## Development
 

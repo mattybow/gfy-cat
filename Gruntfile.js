@@ -66,8 +66,7 @@ module.exports = function(grunt) {
             files:[
                 "src/**/*.scss",
                 "src/**/*.html",
-                "*.html",
-                "*.md",
+                "index.html"
             ],
             tasks:[
                 "exec:sass"
@@ -75,8 +74,8 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.registerTask('build',  ['sass','vulcanize']);
-    grunt.registerTask('deploy', ['copy','gh-pages']);
+    grunt.registerTask('build',  ['sass','vulcanize','copy']);
+    grunt.registerTask('deploy', ['gh-pages']);
     grunt.registerTask('serve', ['build','connect','watch']);
 
 };

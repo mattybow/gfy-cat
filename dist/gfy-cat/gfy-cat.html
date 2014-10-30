@@ -105,6 +105,11 @@
                         }.bind(this));
                     this.$.gfyAjax.go();
                 }
+                if(this.isIdevice()){
+                    this.$.vid.style.height=this.$.vid.getBoundingClientRect().width+'px';
+                    this.$.vid.setAttribute('controls','true');
+                    this.$.vid.addEventListener('loadedmetadata',this.scaleMedia.bind(this));
+                }
             },
             addLoopAttr:function(){
                 this.$.vid.setAttribute('loop','true');
@@ -119,6 +124,12 @@
                 } else if (this.state==='play'){
                     this.rePlay();                                                  //replay video if the state is still play
                 }
+            },
+
+            scaleMedia:function(e){
+                var curWidth = this.$.vid.getBoundingClientRect().width;
+                var calcHeight = Math.floor((this.$.vid.videoHeight * curWidth)/ this.$.vid.videoWidth);
+                this.$.vid.style.height=calcHeight+'px';
             },
 
             incrementPlayCount:function(){
@@ -140,7 +151,7 @@
             },
             pingPongActiveChanged:function(){
                 this.toggleNTimes();
-                console.log('ntimes changed, now:'+this.ntimes);
+                //console.log('ntimes changed, now:'+this.ntimes);
             },
 
             toggleNTimes:function(){
@@ -187,6 +198,9 @@
             isMobile:function(){
                 return (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
             },
+            isIdevice:function(){
+                return (/iPhone|iPad|iPod/i.test(navigator.userAgent));
+            },
             hoverOutHandle:function(){
                 if(this.hideTimeOut){
                     clearTimeout(this.hideTimeOut);
@@ -232,10 +246,10 @@
             reversePlayback:function(e,d,s){
                 if(this.playMode === 'reverse'){
                     this.playMode = 'forward';
-                    console.log('play forward');
+                    //console.log('play forward');
                 } else {
                     this.playMode = 'reverse';
-                    console.log('play backward');
+                    //console.log('play backward');
                 }
 
                 if(e) {
