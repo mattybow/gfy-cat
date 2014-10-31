@@ -12,8 +12,7 @@
     "web-components",
     "gfy-cat",
     "gfycat",
-    "gif",
-    "gifv"
+    "gif"
   ],
   "ignore": [
     "**/.*",
