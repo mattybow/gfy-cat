@@ -1,0 +1,151 @@
+paper-button{
+	border:1px solid rgba(30,30,30,.6);
+	margin:0;
+	padding:5px 20px;
+	text-transform:lowercase;
+}
+body{
+	position:relative;
+	height:100%;
+	width:100%;
+	background-color:#F1F1F1;
+}
+a{
+	color:inherit;
+}
+a:hover{
+	text-decoration:none;
+	color:inherit;
+}
+.ribbon-clip{
+    position: absolute;
+    right: 0px;
+    height:150px;
+    overflow:hidden;	
+}
+.ribbon {
+  background-color: #a00;
+  overflow: hidden;
+  white-space: nowrap;
+  position:relative;
+  right:-50px;
+  top:35px;
+  -webkit-transform: rotate(45deg);
+     -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+       -o-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.ribbon a {
+  border: 1px solid #faa;
+  color: #fff;
+  display: block;
+  font: bold 81.25% 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin: 1px 0;
+  padding: 10px 50px;
+  text-align: center;
+  text-decoration: none;
+}
+.no-top-mar{
+	margin-top:0;
+}
+.full-page{
+	width:100%;
+	height:100%;
+}
+.gist{
+	margin-bottom:10px;
+}
+.examples{
+	color:#666;
+}
+.jumbotron{
+	background-color:#DFDFDF;
+}
+#browser-header{
+	display:inline-block;
+}
+.browsers{
+	white-space:nowrap;
+	margin-top:10px;
+}
+.browsers>svg{
+	width: 10%;
+	height: 10%;
+	margin-left:5px;
+	margin-right:5px;
+}
+.icon{
+	width:15px;
+	height:15px;
+	display:inline-block;
+}
+
+.flexbox{
+	display:-webkit-flex;
+	display:flex;
+	-webkit-flex-flow: row wrap;
+	flex-flow:row wrap;
+	-webkit-align-items:center;
+	align-items:center;
+}
+.flexbox>a{
+	display:-webkit-flex;
+	display:flex;
+	margin-right:5px;
+}
+.browser-info{
+	margin-bottom:30px;
+}
+.browser-icons{
+	text-align: center;
+}
+@media (min-width: 992px) {
+	.browser-icons{
+		text-align: right;
+	}
+	.mobile-info .col-md-1{
+		text-align:right;
+	}
+	.mobile-info .col-md-1 h4{
+		line-height: 1.4;
+	}
+}
+.link-info>*{
+	padding: 40px 30px;
+	border-radius: 4px;
+	-webkit-transition:background-color .2s ease;
+	transition:background-color .2s ease;
+}
+.link-info>*:hover{
+	background-color: #DFDFDF;
+}
+.info{
+	margin-top:20px;
+}
+.info hr{
+	margin-top:40px;
+	border-color:#aaa;
+}
+.imageholder{
+	text-align:center;
+}
+.imageholder img, .imageholder x-gif{
+	height:150px;
+}
+x-gif::shadow .frame{
+	height:150px;
+}
+.mobile-info a{
+	display:inline-block;
+}
+
+.mobile-info .row{
+	margin-top:20px;
+}
+a.link{
+	padding: 2px 4px;
+	font-size: 95%;
+	color: #32408F;
+	border-bottom:1px dotted #32408F;
+}
