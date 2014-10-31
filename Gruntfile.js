@@ -32,20 +32,24 @@ module.exports = function(grunt) {
                 }
             }
         },
-        copy:{
-            main:{
-                flatten:true,
-                expand:true,
-                cwd:'src/',
-                src:['gfy-cat/**','playpause-svg/**','!**/*.scss'],
-                dest:'dist/',
-                filter:'isFile',
-                options:{
-                    process:function(content, srcpath){
-                        return content.replace(/\.\.\/\.\.\/src\/playpause-svg\//,'');
-                    }
+        replace: {
+          dist: {
+            options: {
+              patterns: [
+                {
+                  match: /\.\.\/\.\.\/src\/playpause-svg\//,
+                  replacement: ''
+                },
+                {
+                  match: /\/bower\_components/,
+                  replacement: ''
                 }
-            }
+              ]
+            },
+            files: [
+              {expand:true, flatten: true, src:['src/gfy-cat/**','src/playpause-svg/**','!src/**/*.scss'], dest:'dist/', filter:'isFile'}
+            ]
+          }
         },
         sass: {
           dist: {
@@ -82,7 +86,7 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.registerTask('build',  ['sass','vulcanize','copy']);
+    grunt.registerTask('build',  ['sass','vulcanize','replace']);
     grunt.registerTask('deploy', ['gh-pages']);
     grunt.registerTask('serve', ['build','connect','watch']);
 
