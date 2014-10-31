@@ -37,11 +37,11 @@ module.exports = function(grunt) {
             options: {
               patterns: [
                 {
-                  match: /\.\.\/\.\.\/src\/playpause-svg\//,
+                  match: /\.\.\/\.\.\/src\/playpause-svg\//g,
                   replacement: ''
                 },
                 {
-                  match: /\/bower\_components/,
+                  match: /\/bower_components/g,
                   replacement: ''
                 }
               ]
