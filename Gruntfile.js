@@ -34,9 +34,17 @@ module.exports = function(grunt) {
         },
         copy:{
             main:{
-                files:[
-                    {expand:true, cwd:'src/', src:['gfy-cat/**','playpause-svg/**','!**/*.scss'], dest:'dist/'}
-                ]
+                flatten:true,
+                expand:true,
+                cwd:'src/',
+                src:['gfy-cat/**','playpause-svg/**','!**/*.scss'],
+                dest:'dist/',
+                filter:'isFile',
+                options:{
+                    process:function(content, srcpath){
+                        return content.replace(/\.\.\/\.\.\/src\/playpause-svg\//,'');
+                    }
+                }
             }
         },
         sass: {
