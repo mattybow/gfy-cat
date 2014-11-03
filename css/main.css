@@ -1,7 +1,7 @@
 paper-button{
 	border:1px solid rgba(30,30,30,.6);
 	margin:0;
-	padding:5px 20px;
+	padding:5px 25px;
 	text-transform:lowercase;
 }
 body{
@@ -80,7 +80,22 @@ a:hover{
 	height:15px;
 	display:inline-block;
 }
-
+.icon-md{
+	width:20%;
+	height:auto;
+	margin:auto;
+}
+.ctr{
+	text-align: center;
+}
+.space-md{
+	margin-top:50px;
+	margin-bottom:30px;
+}
+.icon-text{
+	font-weight:300;
+	margin-bottom: 30px;
+}
 .flexbox{
 	display:-webkit-flex;
 	display:flex;
@@ -112,7 +127,7 @@ a:hover{
 	}
 }
 .link-info>*{
-	padding: 40px 30px;
+	padding: 40px 50px;
 	border-radius: 4px;
 	-webkit-transition:background-color .2s ease;
 	transition:background-color .2s ease;
@@ -129,12 +144,13 @@ a:hover{
 }
 .imageholder{
 	text-align:center;
+	height:120px;
 }
 .imageholder img, .imageholder x-gif{
-	height:150px;
+	height:120px;
 }
 x-gif::shadow .frame{
-	height:150px;
+	height:120px;
 }
 .mobile-info a{
 	display:inline-block;
