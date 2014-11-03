@@ -1,0 +1,36 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="800px" height="800px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g>
+        <g>
+            <g>
+                <rect x="64.573" y="239.624" width="143.059" height="524.963" style="fill:rgb(53,101,179);"/>
+            </g>
+            <g>
+                <rect x="64.573" y="52.5592" width="143.059" height="180.46" style="fill:rgb(134,134,134);"/>
+            </g>
+        </g>
+        <g>
+            <g>
+                <g>
+                    <rect x="244.854" y="569.997" width="143.059" height="194.59" style="fill:rgb(53,101,179);"/>
+                </g>
+                <g>
+                    <rect x="244.854" y="367.739" width="143.059" height="194.59" style="fill:rgb(134,134,134);"/>
+                </g>
+                <g>
+                    <rect x="421.862" y="451.546" width="143.059" height="313.04" style="fill:rgb(53,101,179);"/>
+                </g>
+                <g>
+                    <rect x="421.862" y="155.879" width="143.059" height="289.832" style="fill:rgb(134,134,134);"/>
+                </g>
+                <g>
+                    <rect x="605.717" y="579.996" width="143.059" height="184.59" style="fill:rgb(53,101,179);"/>
+                </g>
+                <g>
+                    <rect x="605.717" y="388.721" width="143.059" height="184.59" style="fill:rgb(134,134,134);"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
