@@ -47,6 +47,10 @@ module.exports = function(grunt) {
                 {
                   match:/\.\.\/\.\.\/\.\.\//,
                   replacement: '../../'
+                },
+                {
+                  match:/\.\/core-ajax\//,
+                  replacement: ''
                 }
               ]
             },
