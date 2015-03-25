@@ -1,6 +1,6 @@
 {
   "name": "gfy-cat",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "displaying a gif src as a html5 video element through polymer webcomponent",
   "license": "MIT",
   "authors": [
